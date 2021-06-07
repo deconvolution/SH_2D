@@ -10,6 +10,7 @@ using ParallelStencil.FiniteDifferences2D
 else
     @init_parallel_stencil(Threads, Float64, 2);
 end
+ti=TimerOutput();
 
 function meshgrid(x,y)
     x2=zeros(length(x),length(y));
@@ -115,13 +116,13 @@ plane_grad1=@zeros(input.dims.nx,input.dims.nz);
 plane_grad3=copy(plane_grad1);
 
 plane_grad1[2:input.PML.lp+1,:]=reverse(tt2,dims=1);
-plane_grad1[nx-input.PML.lp:end-1,:]=tt2;
+plane_grad1[input.dims.nx-input.PML.lp:end-1,:]=tt2;
 plane_grad1[1,:]=plane_grad1[2,:];
 plane_grad1[end,:]=plane_grad1[end-1,:];
 
-tt2=repeat(reshape(tt,1,input.PML.lp),nx,1);
+tt2=repeat(reshape(tt,1,input.PML.lp),input.dims.nx,1);
 plane_grad3[:,2:input.PML.lp+1]=reverse(tt2,dims=2);
-plane_grad3[:,nz-input.PML.lp:end-1]=tt2;
+plane_grad3[:,input.dims.nz-input.PML.lp:end-1]=tt2;
 plane_grad3[:,1]=plane_grad3[:,2];
 plane_grad3[:,end]=plane_grad3[:,end-1];
 

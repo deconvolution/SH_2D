@@ -8,8 +8,6 @@ else
     @init_parallel_stencil(Threads, Float64, 2);
 end
 Threads.nthreads()
-## timing
-ti=TimerOutput();
 ## define input
 mutable struct input2
     material_parameter
@@ -138,5 +136,3 @@ receiver,
 visualization);
 ## pass input to solver mono_2D_sh()
 u2_next,R=mono_2D_sh(input);
-##
-heatmap(u2_next)
