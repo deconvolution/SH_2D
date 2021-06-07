@@ -1,5 +1,12 @@
 ## import packages
-using SH_2D
+const USE_GPU=false  # Use GPU? If this is set false, then no GPU needs to be available
+using SH_2D,SH_2D.SH_solver,ParallelStencil
+using ParallelStencil.FiniteDifferences2D
+@static if USE_GPU
+    @init_parallel_stencil(CUDA, Float64, 2);
+else
+    @init_parallel_stencil(Threads, Float64, 2);
+end
 Threads.nthreads()
 ## timing
 ti=TimerOutput();
