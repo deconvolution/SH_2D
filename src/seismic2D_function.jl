@@ -1,5 +1,5 @@
 module SH_solver
-export MAT,Plot,Dates,TimerOutput,WriteVTK,DataFrames,CSV,ProgressMeter,Random,rickerWave
+export MAT,Plot,Dates,TimerOutput,WriteVTK,DataFrames,CSV,ProgressMeter,Random,rickerWave,mono_2D_sh
 using Random,MAT,Plots,Dates,TimerOutputs,WriteVTK,DataFrames,CSV,ProgressMeter
 
 const USE_GPU=false  # Use GPU? If this is set false, then no GPU needs to be available
