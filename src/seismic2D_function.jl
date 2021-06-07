@@ -92,9 +92,9 @@ vtkfile["ts2"]=input.material_parameter.ts2;
 vtkfile["phi2"]=input.material_parameter.phi2;
 vtk_save(vtkfile);
 CSV.write(string(path_model,"/receiver location.csv"),
-DataFrame([input.receiver.r1t input.receiver.r3t]));
+DataFrame([input.receiver.r1t input.receiver.r3t]),:auto);
 CSV.write(string(path_model,"/source location.csv"),
-DataFrame([input.source.s1t input.source.s3t]));
+DataFrame([input.source.s1t input.source.s3t]),:auto);
 
 # create folder for rec
 path_rec=string(input.visualization.path,"/rec/");
