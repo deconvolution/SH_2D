@@ -1,4 +1,4 @@
-module SH_solver
+module SH_solver2
 using MAT,Plots,Dates,TimerOutputs,WriteVTK,DataFrames,CSV,ProgressMeter
 
 const USE_GPU=false  # Use GPU? If this is set false, then no GPU needs to be available
