@@ -1,12 +1,5 @@
 ## import packages
-const USE_GPU=false  # Use GPU? If this is set false, then no GPU needs to be available
 using SH_2D,SH_2D.SH_solver,ParallelStencil
-using ParallelStencil.FiniteDifferences2D
-@static if USE_GPU
-    @init_parallel_stencil(CUDA, Float64, 2);
-else
-    @init_parallel_stencil(Threads, Float64, 2);
-end
 Threads.nthreads()
 ## define input
 mutable struct input2
@@ -82,14 +75,14 @@ PML=PML2(20, # PML layers
 ## Material parameter
 nx=dims.nx;
 nz=dims.nz;
-material_parameter=material_parameter2(@zeros(nx,nz), # C44
-@zeros(nx,nz), # C46
-@zeros(nx,nz), # C66
-@zeros(nx,nz), # ts2
-@zeros(nx,nz), # ts4
-@zeros(nx,nz), # phi2
-@zeros(nx,nz), # phi4
-@zeros(nx,nz)); # rho
+material_parameter=material_parameter2(zeros(nx,nz), # C44
+zeros(nx,nz), # C46
+zeros(nx,nz), # C66
+zeros(nx,nz), # ts2
+zeros(nx,nz), # ts4
+zeros(nx,nz), # phi2
+zeros(nx,nz), # phi4
+zeros(nx,nz)); # rho
 
 material_parameter.C44[:] .=10^9;
 material_parameter.C46[:] .=-10^8;
