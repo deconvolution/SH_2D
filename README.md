@@ -7,6 +7,6 @@ This is a solver for generalized SH-wave equations. Carcione, J. M., & Cavallini
 # How to use
 Add this repository to Julia
 ```
-pkg> add https://github.com/boriskaus/MagmaThermoKinematics.jl
+pkg> add https://github.com/deconvolution/SH_2D
 ```
 Download files in "examples" and run for simulation.
